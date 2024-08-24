@@ -1,13 +1,17 @@
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+dotenv.config();
+
+const mongoUrl = process.env.MONGO_URI
 
 const connectDb= async()=>{
     try{
-        const conn = await mongoose.connect('mongodb://localhost:27017/ekhana');
+        const conn = await mongoose.connect(mongoUrl);
         console.log(`Connected: ${conn.connection.host}`) 
 
     }
     catch(err){
-        console.err("failed",err);
+        console.log("failed",err);
         process.exit(1);
 
     }
