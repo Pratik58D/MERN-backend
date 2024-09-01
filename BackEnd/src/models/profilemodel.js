@@ -16,6 +16,7 @@ const profileSchema = new schema({
    address:{
         type: String,
        },
+       
        profilPic:{
         type : String,
         required :false

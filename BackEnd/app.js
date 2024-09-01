@@ -27,7 +27,6 @@ app.use("/api/category",createCategory)
 
 
 //for Product 
-
 const createProduct = require("./src/routes/productRoutes")
 app.use("/api/product",createProduct)
 

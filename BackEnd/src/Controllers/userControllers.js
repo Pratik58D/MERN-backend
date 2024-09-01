@@ -27,11 +27,13 @@ const resgisterUser = async (req, res) => {
     });
 
 
-    const profile = await Profile.findOne({user: newUser._id});
-    if(profile){
-      return res.status(400).json({md:"profile already exits"})
+    // const profile = await Profile.findOne({user: newUser._id});
+    // if(profile){
+    //   return res.status(400).json({Msg:"profile already exits"})
 
-    }
+    // }
+
+
     const newProfile = new Profile({
       user : newUser._id
     });
