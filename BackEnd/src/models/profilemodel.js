@@ -3,26 +3,23 @@ const schema = mongoose.Schema;
 
 
 const profileSchema = new schema({
-    id:{
-        type: String,
-        required: true
+    user:{
+        type : schema.Types.ObjectId,
+        ref: "User"
     },
     full_name: {
         type: String,
-        required: true,
-    },
-    email: {
-        type: String,
-        required: true,
     },
    phone:{
         type: String,
-        required:true,
        },
    address:{
         type: String,
-        required:true,
        },
+       profilPic:{
+        type : String,
+        required :false
+       }
 });
 
 

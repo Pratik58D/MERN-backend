@@ -15,11 +15,21 @@ app.use("/api/user",userRegister);
 
 //profileregister
 const showprofile = require("./src/routes/profileRoute")
-
-app.use("/api",showprofile)
-
+app.use("/api/profile",showprofile)
 
 
+//for category 
+
+//create category
+const createCategory = require("./src/routes/categoryRoute");
+app.use("/api/category",createCategory)
+
+
+
+//for Product 
+
+const createProduct = require("./src/routes/productRoutes")
+app.use("/api/product",createProduct)
 
 
 app.listen(PORT,()=>console.log(`server started ${PORT} `))

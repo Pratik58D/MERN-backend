@@ -1,15 +1,13 @@
 const express = require('express');
-const { showProfile ,getProfiles,getProfileById } = require('../Controllers/profileController');
-
 const router = express.Router();
 
-router.post("/profile",showProfile);
+const { getProfiles } = require('../Controllers/profileController');
+
+;
 
 //new route to get all profiles
-router.get("/profiles",getProfiles);
+router.get("/all",getProfiles);
 
-// Route to get a profile by ID
-router.get("/profile/:id", getProfileById);
 
 
 module.exports = router;
