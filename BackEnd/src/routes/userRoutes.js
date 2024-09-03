@@ -1,6 +1,6 @@
 //routes for user registaration
+const express = require("express")
 
-const express = require("express");
 const { resgisterUser, getUsers,loginUser } = require("../Controllers/userControllers");
 
 const router = express.Router();
