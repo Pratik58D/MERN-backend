@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { getProfiles, UpdateProfile } = require('../Controllers/profileController');
+const { getProfiles, UpdateProfile, deleteProfile } = require('../Controllers/profileController');
 const authMiddleware = require('../middleware/authMiddleware');
 
 
@@ -27,5 +27,15 @@ router.put("/update",authMiddleware, UpdateProfile)
 
 //new route to get all profiles
 router.get("/get",authMiddleware,getProfiles);
+
+/**
+ * @description delete a user Profile
+ * @api /api/profile/delete
+ * @access Private
+ * @type delete
+ * @return response
+ */
+router.delete("/delete",authMiddleware,deleteProfile);
+
 
 module.exports = router;

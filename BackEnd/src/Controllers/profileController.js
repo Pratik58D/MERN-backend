@@ -51,4 +51,25 @@ const getProfiles = async (req,res)=>{
 };
 
 
-module.exports =  {getProfiles,UpdateProfile};
+//controller to delete user profile
+const deleteProfile = async(req,res) =>{
+    try{
+        const userId = req.user.id;
+        const profile = await Profile.findOneAndDelete({user:userId})
+        if(!profile){
+            return res.status(404).json({msg:"Profile not found"})
+        }
+        return res.status(200).json({msg: "profile delete sucessfully",profile: profile})
+        
+
+    }
+    catch(err){
+        console.log(err);
+        return res.status(500).json({ msg: "Failed to retrieve profiles" });
+
+    }
+
+}
+
+
+module.exports =  {getProfiles,UpdateProfile,deleteProfile};
