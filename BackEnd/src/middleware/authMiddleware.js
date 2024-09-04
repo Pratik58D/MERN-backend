@@ -3,7 +3,9 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const authMiddleware = (req, res, next) => {
-  const token = req.header('Authorization').replace('Bearer ', '');
+  const token = req.header('Authorization')?
+  req.header('Authorization').replace('Bearer ', '')
+  : null;
   // console.log(token);
   if (!token) {
     return res.status(401).json({ msg: 'No token, authorization denied' });
@@ -12,7 +14,6 @@ const authMiddleware = (req, res, next) => {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     if(!decoded){
     return res.status(401).json({ msg: 'Token is not valid' });
-
     }
     // console.log(decoded);
     req.user = decoded.user;

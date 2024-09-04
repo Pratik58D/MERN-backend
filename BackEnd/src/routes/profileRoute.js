@@ -17,8 +17,15 @@ const authMiddleware = require('../middleware/authMiddleware');
 router.put("/update",authMiddleware, UpdateProfile)
 
 
+/**
+ * @description To update a user Profile
+ * @api /api/profile/update
+ * @access Private
+ * @type put
+ * @return response
+ */
 
 //new route to get all profiles
-router.get("/all",getProfiles);
+router.get("/get",authMiddleware,getProfiles);
 
 module.exports = router;
