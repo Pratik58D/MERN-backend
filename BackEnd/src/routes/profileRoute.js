@@ -3,6 +3,7 @@ const router = express.Router();
 
 const { getProfiles, UpdateProfile, deleteProfile } = require('../Controllers/profileController');
 const authMiddleware = require('../middleware/authMiddleware');
+const { profileImage } = require('../middleware/uploadMiddleware');
 
 
 /**
@@ -14,7 +15,7 @@ const authMiddleware = require('../middleware/authMiddleware');
  */
 
 
-router.put("/update",authMiddleware, UpdateProfile)
+router.put("/update",authMiddleware,profileImage.single('profilePic'), UpdateProfile)
 
 
 /**
@@ -35,7 +36,7 @@ router.get("/get",authMiddleware,getProfiles);
  * @type delete
  * @return response
  */
-router.delete("/delete",authMiddleware,deleteProfile);
+router.delete("/delete",authMiddleware, deleteProfile);
 
 
 module.exports = router;

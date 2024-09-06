@@ -1,4 +1,9 @@
-const Profile = require("../models/profilemodel")
+const Profile = require("../models/profilemodel");
+
+const dotenv = require("dotenv");
+dotenv.config();
+
+const domain = process.env.DOMAIN;
 
 
 //update user Profile
@@ -12,17 +17,28 @@ const UpdateProfile = async(req,res) =>{
         }
 
         const {full_name,phone,address} = req.body;
-        const profileUpdate = await Profile.updateOne({user:userId} ,{
-            full_name : full_name ? full_name : profile.full_name,
-            phone : phone ? phone : profile.phone,
-            address : address ? address : profile.address,
-        })
+        const profileData ={
+                full_name : full_name ? full_name : profile.full_name,
+                phone : phone ? phone : profile.phone,
+                address : address ? address : profile.address,
+            };
+     
+            if(req.file){
+                console.log(req.file)
+                profileData.profilePic = `${domain}uploads/profiles/${req.file.filename}`;
+            }
+            
+        const profileUpdate = await Profile.updateOne(
+            {user:userId} ,
+            {$set : profileData},
+            
+   
+    );
 
-
-
-        return res.status(200).json({msg:"Profile updated sucessfully ",profileUpdate});
-
-
+        return res.status(200).json(
+            {msg:"Profile updated sucessfully ",
+                profileUpdate,
+            profile});
     }
     catch(err){
         console.log(err)

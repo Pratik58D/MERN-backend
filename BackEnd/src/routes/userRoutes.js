@@ -13,8 +13,4 @@ router.post("/login",loginUser);
 //for finding the users
 router.get("/users",getUsers)
 
-
-
-
-
 module.exports = router;
