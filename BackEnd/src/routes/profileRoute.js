@@ -36,6 +36,7 @@ router.get("/get",authMiddleware,getProfiles);
  * @type delete
  * @return response
  */
+
 router.delete("/delete",authMiddleware, deleteProfile);
 
 

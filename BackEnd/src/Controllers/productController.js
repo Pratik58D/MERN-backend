@@ -13,7 +13,7 @@ const createProduct  = async(req,res) =>{
             stock
         } = req.body;
 
- // Check if a product with the same name exists with a different category
+ // Checking if a product with the same name exists with a different category
 
         const existingProduct = await Product.findOne({name });
 

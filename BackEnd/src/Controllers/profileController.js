@@ -31,10 +31,7 @@ const UpdateProfile = async(req,res) =>{
         const profileUpdate = await Profile.updateOne(
             {user:userId} ,
             {$set : profileData},
-            
-   
     );
-
         return res.status(200).json(
             {msg:"Profile updated sucessfully ",
                 profileUpdate,
@@ -77,15 +74,12 @@ const deleteProfile = async(req,res) =>{
         }
         return res.status(200).json({msg: "profile delete sucessfully",profile: profile})
         
-
     }
     catch(err){
         console.log(err);
         return res.status(500).json({ msg: "Failed to retrieve profiles" });
 
     }
-
 }
-
 
 module.exports =  {getProfiles,UpdateProfile,deleteProfile};
