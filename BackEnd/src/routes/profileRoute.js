@@ -15,14 +15,21 @@ const { profileImage } = require('../middleware/uploadMiddleware');
  */
 
 
-router.put("/update",authMiddleware,profileImage.single('profilePic'), UpdateProfile)
+router.put("/update",authMiddleware,profileImage.single('profilePic'), UpdateProfile) /**
+* @description To login into file
+* @api /api/user/register
+* @access Public
+* @type post
+* @return response
+*/
+
 
 
 /**
- * @description To update a user Profile
- * @api /api/profile/update
+ * @description To retrive a user Profile
+ * @api /api/profile/get
  * @access Private
- * @type put
+ * @type get
  * @return response
  */
 

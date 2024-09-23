@@ -83,7 +83,7 @@ const loginUser = async (req, res) => {
     let user = await User.findOne({ email });
 
     if (!user) {
-      return res.status(400).json({ msg: "Invalid credentials" });
+      return res.status(400).json({ msg: "emmail doesnot found" });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
@@ -94,7 +94,7 @@ const loginUser = async (req, res) => {
 
     const payload = {
       user: {
-        id: user.id, //this will automatically understant this id = _id
+        id: user.id, //this will automatically understand this id = _id
       },
     };
 
